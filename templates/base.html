@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hangman</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% if errors %}
+<div id="error-box">{{ errors }}</div>
+{% else %}{% endif %}
+
+<div id="game-end-box">{% if victory %}Victory!{% elif defeat %}Defeat{% else %}{% endif %}</div>
+
+<p id="word-display">{{ word_display }}</p>
+<p class="main-block">Guesses: {{ guesses }}</p>
+<p class="main-block">Guesses left: {{ guesses_left }}</p>
+
+{% if not victory and not defeat %}
+<form action="/session/{{ url }}/guesses" method="post">
+  Guess:&nbsp;<input type="text" name="guess" required="required">
+  <br>
+  <input type="submit" value="Go">
+</form>
+{% else %}{% endif %}
+
+<form action="/session/{{ url }}/undo" method="post">
+  <input type="submit" value="Undo">
+</form>
+
+{% if victory and prev_word_count < 8 %}
+<form action="/session/{{ url }}/games" method="post">
+  <input type="submit" value="New Game">
+</form>
+{% else %}{% endif %}
+
+</body>
+</html>

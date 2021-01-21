@@ -1,0 +1,19 @@
+* {
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px;
+}
+
+div#error-box {
+    color: #FF0000;
+}
+
+p#word-display {
+    font-size: 200%;
+    letter-spacing: 10px;
+    margin-bottom: 1%;
+}
+
+p.main-block {
+    
+}
