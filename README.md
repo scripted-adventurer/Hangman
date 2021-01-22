@@ -51,22 +51,10 @@ Launch a terminal window in the same directory as this README file and create a 
 docker build -t hangman .
 ```
 
-Then launch the docker image using the name provided above:
+Then launch the docker image and create a secret key environment variable for the application using the name provided above:
 
 ```
-docker container run -ti hangman /bin/sh
+docker run --env HANGMAN_KEY=$(tr -dc A-Z0-9,- </dev/urandom | head -c 100) -p 5000:5000 hangman
 ```
 
-Once the image loads, you will need to provide a secret key for the application to use. The below command will generate a random 100 character key:
-
-```
-export HANGMAN_KEY=$(tr -dc A-Z0-9,- </dev/urandom | head -c 100)
-```
-
-Then, you can start Flask's development server with the below command: 
-
-```
-flask run
-```
-
-Navigate to http://127.0.0.1:5000 to demo the application.
+Navigate to http://172.17.0.2:5000/ to demo the application.

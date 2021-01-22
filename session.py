@@ -150,7 +150,7 @@ class Session:
     def get_context(self):
         """Return all the necessary data for rendering the game template
         """
-        return {'url': self.encoded_url, 'errors': self.errors, 
+        return {'url': self.encoded_url, 'errors': ' '.join(self.errors), 
             'word_display': ' '.join(self.word_display), 
             'guesses': ' '.join(self.guesses), 'guesses_left': self.guesses_left, 
             'victory': self.victory, 'defeat': self.defeat, 

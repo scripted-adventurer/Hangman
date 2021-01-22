@@ -69,4 +69,7 @@ def create_app(testing=False):
 
         return render_template('base.html', **session.get_context())
 
-    return app    
+    return app
+
+if __name__ == '__main__':
+    app.run(host='172.17.0.2')
